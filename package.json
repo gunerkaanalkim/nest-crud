@@ -1,0 +1,28 @@
+{
+  "name": "nest-crud",
+  "version": "1.0.0",
+  "description": "An abstraction layer to create core controllers for Nestjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunerkaanalkim/nest-crud.git"
+  },
+  "keywords": [
+    "nest",
+    "crud",
+    "abstraction",
+    "generator"
+  ],
+  "author": "Guner Kaan Alkim <g.kaanalkim@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gunerkaanalkim/nest-crud/issues"
+  },
+  "homepage": "https://github.com/gunerkaanalkim/nest-crud#readme",
+  "devDependencies": {
+    "@nestjs/common": "^10.2.8"
+  }
+}
