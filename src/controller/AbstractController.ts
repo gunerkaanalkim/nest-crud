@@ -1,4 +1,4 @@
-import {Body, Delete, Get, Param} from '@nestjs/common';
+import {Body, Delete, Get, Param, Patch, Post} from '@nestjs/common';
 import AbstractEntity from "../model/AbstractEntity";
 import AbstractDTO from "../payload/AbstractDTO";
 import AbstractCrudService from "../service/AbstractCrudService";
@@ -8,6 +8,11 @@ export default abstract class AbstractController<
     D extends AbstractDTO,
 > {
     protected abstract getService(): AbstractCrudService<T, D>;
+
+    @Post()
+    create(@Body() dto: D) {
+        return this.getService().create(dto);
+    }
 
     @Get()
     findAll() {
@@ -19,7 +24,7 @@ export default abstract class AbstractController<
         return this.getService().findOne(+id);
     }
 
-    @Get(':id')
+    @Patch(':id')
     update(@Param('id') id: string, @Body() dto: D) {
         return this.getService().update(+id, dto);
     }
