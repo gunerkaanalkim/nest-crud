@@ -1,7 +1,7 @@
 import CatEntity from './cat.entity';
 import CatDto from './cat.dto';
 import {Injectable} from '@nestjs/common';
-import AbstractMapper from "../../../../dist/mapper/AbstractMapper";
+import AbstractMapper from "nest-crud-abstraction/dist/mapper/AbstractMapper";
 
 @Injectable()
 export default class CatMapper extends AbstractMapper<

@@ -9,22 +9,22 @@ import AbstractMapper from "../../../../dist/mapper/AbstractMapper";
 
 @Injectable()
 export class CatService extends AbstractCrudService<
-  CatEntity,
-  CatDto
+    CatEntity,
+    CatDto
 > {
-  constructor(
-    @InjectRepository(CatEntity)
-    private usersRepository: Repository<CatEntity>,
-    private readonly sampleMapper: CatMapper,
-  ) {
-    super();
-  }
+    constructor(
+        @InjectRepository(CatEntity)
+        private usersRepository: Repository<CatEntity>,
+        private readonly catMapper: CatMapper,
+    ) {
+        super();
+    }
 
-  protected getRepository(): any {
-    return this.usersRepository;
-  }
+    protected getRepository(): any {
+        return this.usersRepository;
+    }
 
-  protected getMapper(): AbstractMapper<CatEntity, CatDto> {
-    return this.sampleMapper;
-  }
+    protected getMapper(): AbstractMapper<CatEntity, CatDto> {
+        return this.catMapper;
+    }
 }
