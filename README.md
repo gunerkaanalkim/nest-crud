@@ -4,6 +4,10 @@ An abstraction layer that implements TypeORM and Repository pattern, to create c
 Nowadays we're spending too much time to create core controllers called CRUD controller. 
 To prevent this, we can use **nest-crud** abstraction layer.
 
+```bash
+npm install nest-crud-abstraction
+```
+
 # At a glance
 
 ## 1. Entities & Data Transfer Objects
