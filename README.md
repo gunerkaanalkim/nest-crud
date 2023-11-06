@@ -150,3 +150,22 @@ export class CatController extends AbstractController<CatEntity, CatDto> {
     }
 }
 ```
+
+# Conclusion
+
+If you run your application you should see below output that describes our mapped endpoints.
+
+```bash
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [InstanceLoader] AppModule dependencies initialized +49ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [InstanceLoader] TypeOrmModule dependencies initialized +0ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [InstanceLoader] TypeOrmCoreModule dependencies initialized +71ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [InstanceLoader] TypeOrmModule dependencies initialized +0ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [InstanceLoader] CatsModule dependencies initialized +0ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [RoutesResolver] CatController {/cats}: +7ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [RouterExplorer] Mapped {/cats, GET} route +1ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [RouterExplorer] Mapped {/cats/:id, GET} route +1ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [RouterExplorer] Mapped {/cats/:id, GET} route +0ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [RouterExplorer] Mapped {/cats/:id, DELETE} route +0ms
+[Nest] 52991  - 11/06/2023, 5:42:00 PM     LOG [NestApplication] Nest application successfully started +1ms
+```
