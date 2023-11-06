@@ -1,27 +1,37 @@
 import AbstractEntity from "../model/AbstractEntity";
 import AbstractDTO from "../payload/AbstractDTO";
+import {Repository} from "typeorm";
+import AbstractMapper from "../mapper/AbstractMapper";
 
 export default abstract class AbstractCrudService<
     T extends AbstractEntity,
     D extends AbstractDTO,
 > {
-    protected abstract getRepository(): any;
+    protected abstract getRepository(): Repository<T>;
 
-    create() {}
+    protected abstract getMapper(): AbstractMapper<T, D>;
 
-    findAll(): string {
-        return 'find all';
+    create(dto: T) {
+        this.getRepository().create(dto);
     }
 
-    findOne(id: number) {
-        return id;
+    findAll(): Promise<T[]> {
+        return this.getRepository().find();
+    }
+
+    findOne(id: number): Promise<T | null> {
+        // @ts-ignore
+        return this.getRepository().findByI({id});
     }
 
     update(id: number, dto: D) {
-        return id;
+        const t = this.getMapper().toEntity(dto);
+
+        // @ts-ignore
+        return this.getRepository().update(id, t);
     }
 
     remove(id: number) {
-        return id;
+        return this.getRepository().delete(id)
     }
 }

@@ -25,7 +25,9 @@
   "homepage": "https://github.com/gunerkaanalkim/nest-crud#readme",
   "devDependencies": {
     "@nestjs/common": "^10.2.8",
+    "@nestjs/typeorm": "^10.0.0",
     "ts-node": "^10.9.1",
+    "typeorm": "^0.3.17",
     "typescript": "^5.2.2"
   }
 }
