@@ -11,8 +11,10 @@ export default abstract class AbstractCrudService<
 
     protected abstract getMapper(): AbstractMapper<T, D>;
 
-    create(dto: T) {
-        this.getRepository().create(dto);
+    create(dto: D) {
+        const t = this.getMapper().toEntity(dto);
+
+        this.getRepository().create(t);
     }
 
     findAll(): Promise<T[]> {
