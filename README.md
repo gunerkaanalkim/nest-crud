@@ -12,6 +12,14 @@ npm install nest-crud-abstraction
 To see how to use `nest-crud-abstraction` package, please refer to the sample folder in the root of the project. Then run following;
 
 ```bash
+//docker-compose.yml
+
+docker-compose docker-compose --env-file .env.dev up
+```
+
+```bash
+//package.json
+
 npm run start:dev
 ```
 
