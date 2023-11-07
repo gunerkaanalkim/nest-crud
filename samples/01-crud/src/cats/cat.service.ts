@@ -20,7 +20,7 @@ export class CatService extends AbstractCrudService<
         super();
     }
 
-    protected getRepository(): any {
+    protected getRepository(): Repository<CatEntity> {
         return this.usersRepository;
     }
 
