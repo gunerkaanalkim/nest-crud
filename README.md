@@ -8,6 +8,13 @@ To prevent this, we can use **nest-crud** abstraction layer.
 npm install nest-crud-abstraction
 ```
 
+# Sample Project
+To see how to use `nest-crud-abstraction` package, please refer to the sample folder in the root of the project. Then run following;
+
+```bash
+npm run start:dev
+```
+
 # At a glance
 
 ## 1. Entities & Data Transfer Objects
