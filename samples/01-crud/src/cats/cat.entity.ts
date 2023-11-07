@@ -3,7 +3,7 @@ import {Column, Entity} from 'typeorm';
 
 @Entity({name: 'cats'})
 export default class CatEntity extends AbstractEntity {
-    @Column({name: 'name'})
+    @Column({name: 'breed'})
     private _breed: string;
 
     @Column({name: 'color'})
