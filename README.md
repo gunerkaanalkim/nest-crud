@@ -8,6 +8,21 @@ To prevent this, we can use **nest-crud** abstraction layer.
 npm install nest-crud-abstraction
 ```
 
+# Sample Project
+To see how to use `nest-crud-abstraction` package, please refer to the sample folder in the root of the project. Then run following;
+
+```bash
+//docker-compose.yml
+
+docker-compose docker-compose --env-file .env.dev up
+```
+
+```bash
+//package.json
+
+npm run start:dev
+```
+
 # At a glance
 
 ## 1. Entities & Data Transfer Objects
@@ -26,7 +41,7 @@ import {Column, Entity} from 'typeorm';
 
 @Entity({name: 'cats'})
 export default class CatEntity extends AbstractEntity {
-    @Column({name: 'name'})
+    @Column({name: 'breed'})
     private _breed: string;
 
     @Column({name: 'color'})
