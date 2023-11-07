@@ -1,11 +1,11 @@
 {
   "name": "nest-crud-abstraction",
-  "version": "1.1.6",
+  "version": "1.1.12",
   "description": "An abstraction layer to create core controllers for Nestjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "rm -rf dist && tsc"
+    "prepublish": "rm -rf dist && tsc && npm publish"
   },
   "repository": {
     "type": "git",

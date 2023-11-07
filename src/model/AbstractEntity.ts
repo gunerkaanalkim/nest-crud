@@ -1,14 +1,14 @@
-import {PrimaryGeneratedColumn} from "typeorm";
+import { Column, PrimaryGeneratedColumn } from "typeorm";
 
 export default abstract class AbstractEntity {
-    @PrimaryGeneratedColumn()
-    protected _id: number;
+  @PrimaryGeneratedColumn({ name: "id" })
+  protected _id: number;
 
-    get id(): number {
-        return this._id;
-    }
+  get id(): number {
+    return this._id;
+  }
 
-    set id(value: number) {
-        this._id = value;
-    }
+  set id(value: number) {
+    this._id = value;
+  }
 }

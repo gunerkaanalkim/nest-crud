@@ -1,39 +1,43 @@
 import AbstractEntity from "../model/AbstractEntity";
 import AbstractDTO from "../payload/AbstractDTO";
-import {Repository} from "typeorm";
+import { Repository } from "typeorm";
 import AbstractMapper from "../mapper/AbstractMapper";
 
 export default abstract class AbstractCrudService<
-    T extends AbstractEntity,
-    D extends AbstractDTO,
+  T extends AbstractEntity,
+  D extends AbstractDTO,
 > {
-    protected abstract getRepository(): Repository<T>;
+  protected abstract getRepository(): Repository<T>;
 
-    protected abstract getMapper(): AbstractMapper<T, D>;
+  protected abstract getMapper(): AbstractMapper<T, D>;
 
-    create(dto: D) {
-        const t = this.getMapper().toEntity(dto);
+  async create(dto: D) {
+    const t = this.getMapper().toEntity(dto);
 
-        this.getRepository().create(t);
-    }
+    await this.getRepository().save(t);
 
-    findAll(): Promise<T[]> {
-        return this.getRepository().find();
-    }
+    return dto;
+  }
 
-    findOne(id: number): Promise<T | null> {
-        // @ts-ignore
-        return this.getRepository().findByI({id});
-    }
+  async findAll(): Promise<T[]> {
+    return await this.getRepository().find();
+  }
 
-    update(id: number, dto: D) {
-        const t = this.getMapper().toEntity(dto);
+  async findOne(_id: number): Promise<T | null> {
+    // @ts-ignore
+    return await this.getRepository().findOneBy({ _id });
+  }
 
-        // @ts-ignore
-        return this.getRepository().update(id, t);
-    }
+  async update(id: number, dto: D) {
+    const t = this.getMapper().toEntity(dto);
 
-    remove(id: number) {
-        return this.getRepository().delete(id)
-    }
+    // @ts-ignore
+    await this.getRepository().update(id, t);
+
+    return dto;
+  }
+
+  async remove(id: number) {
+    return await this.getRepository().delete(id);
+  }
 }
