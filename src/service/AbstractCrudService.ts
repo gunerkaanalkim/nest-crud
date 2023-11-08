@@ -3,11 +3,13 @@ import AbstractDTO from "../payload/AbstractDTO";
 import { Repository } from "typeorm";
 import AbstractMapper from "../mapper/AbstractMapper";
 import { NotFoundException } from "@nestjs/common";
+import AbstractService from "./AbstractService";
 
 export default abstract class AbstractCrudService<
   T extends AbstractEntity,
   D extends AbstractDTO,
-> {
+> extends AbstractService<T> {
+
   protected abstract getRepository(): Repository<T>;
 
   protected abstract getMapper(): AbstractMapper<T, D>;
@@ -24,30 +26,20 @@ export default abstract class AbstractCrudService<
     return await this.getRepository().find();
   }
 
-  async findOne(_id: number): Promise<T | null> {
+  async findOne(_id: number): Promise<D | null> {
     // @ts-ignore
     const entity = await this.getRepository().findOneBy({ _id });
 
-    if (!entity) {
-      throw new NotFoundException(`Not Found`, {
-        cause: new Error(),
-        description: `Object with given id ${_id} not found.`
-      });
-    }
+    super.isEntityExists(entity);
 
-    return entity;
+    return this.getMapper().toDTO(entity);
   }
 
   async update(_id: number, dto: D) {
     // @ts-ignore
     const entity = await this.getRepository().findOneBy({ _id });
 
-    if (!entity) {
-      throw new NotFoundException(`Not Found`, {
-        cause: new Error(),
-        description: `Object with given id ${_id} not found.`
-      });
-    }
+    super.isEntityExists(entity);
 
     const t = this.getMapper().toEntity(dto);
     // @ts-ignore
@@ -60,12 +52,7 @@ export default abstract class AbstractCrudService<
     // @ts-ignore
     const entity = await this.getRepository().findOneBy({ _id });
 
-    if (!entity) {
-      throw new NotFoundException(`Not Found`, {
-        cause: new Error(),
-        description: `Object with given id ${_id} not found.`
-      });
-    }
+    super.isEntityExists(entity);
 
     return await this.getRepository().delete(_id);
   }
